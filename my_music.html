@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUSIC</title>
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="brand"><img src="music.png" alt="music">Music</li>
+            <li>Home</li>
+            <li>About</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="songlist">
+            <h1>Best of NCS -No copyright sounds</h1>
+            <div class="searchBar">
+                <input type="text" id="searchInput" placeholder="Search music (powered by Jamendo)">
+                <button id="searchButton">Search</button>
+            </div>
+            <!-- <input type="file" id="selectFolder" webkitdirectory multiple> -->
+             <button id="selectFolder">📁 Select Folder</button>
+            <div class="songItemContainer" id="songItemContainer">
+
+            </div>
+        </div>
+        <div class="songBanner"></div>
+    </div>
+
+
+    <div class="bottom">
+        <div class="progressWrapper">
+            <span id="currentTime">00 : 00</span>
+            <input type="range" name="range" id="myProgressBar" min="0" value="0" max="100">
+            <span id="totalDuration">00:00</span>
+        </div>
+        <div class="songInfo">
+            <img src="playing.gif" id="gif" width="32px">
+            <span id="songInfoName">My Music</span>
+        </div>
+        <div class="icons">
+            <!-- fontawesome icons -->
+            <i class="fa-solid fa-3x fa-backward" id="previous"></i>
+            <i class="fa-solid fa-3x fa-play" id="Play"></i>
+            <i class="fa-solid fa-3x fa-forward" id="next"></i>
+        </div>
+        <div class="volumeControl">
+            <i class="fa-solid fa-volume-high" id="volumeIcon"></i>
+            <input type="range" id="volumeBar" min="0" max="100" value="100">
+        </div>
+        
+    </div>
+
+
+    <script src="https://kit.fontawesome.com/948ac2af92.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
