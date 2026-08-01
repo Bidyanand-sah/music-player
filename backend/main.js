@@ -1,4 +1,4 @@
-const {app,BrowserWindow,ipcMain,dialog}=require("electron");
+const {app,BrowserWindow,ipcMain,dialog,Menu}=require("electron");
 //ipcMain ye main process mea msg sunne ke liye
 
 //fs
@@ -91,7 +91,9 @@ ipcMain.handle("select-folder",async()=>{
 
 //electron ko load hone mea time lagta hai ham check kar rahe hai aap jab ready ho jaye to then mea return hoga uske baad aandar ka function call hoga then upar ka function chalega phir window bhi load ho jayega
 app.whenReady().then(()=>{
-    createWindow();
+  
+  Menu.setApplicationMenu(null);
+  createWindow();
 });
 
 
