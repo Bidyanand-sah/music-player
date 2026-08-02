@@ -13,7 +13,11 @@ const path=require("path");
 const Database=require("better-sqlite3");
 
 // pahle path wale function se path pata kar lenge uske baad new Database  mea new ka matlab is class se ek naya object banao or check karta hai music.dp exist karta hai ya nahi agar karta hai to open karlo agar nahi to creatre kar leta hai or dp ke help se aab ham insert or select kar payenge
-let db=new Database(path.join(__dirname,"music.db"));
+
+// let db=new Database(path.join(__dirname,"music.db"));
+
+//
+let db=new Database(path.join(app.getPath("userData"),"music.db"));
 
 // Yaha mere hisab se databse ke aandar table create ho raha hai
 db.exec("CREATE TABLE IF NOT EXISTS songs(id INTEGER PRIMARY KEY AUTOINCREMENT,song_name TEXT,song_path TEXT UNIQUE,cover_path TEXT,duration TEXT,artist_name TEXT)");
@@ -29,7 +33,7 @@ function createWindow(){
             preload:path.join(__dirname,"preload.js")
         }
     });
-    window.loadFile("../my_music.html");
+    window.loadFile("my_music.html");
 }
 
 //ye handle preload se aaya hua request pe kam karta hai yaha se request aaya to ye chalta hai
@@ -93,6 +97,7 @@ ipcMain.handle("select-folder",async()=>{
 app.whenReady().then(()=>{
   
   Menu.setApplicationMenu(null);
+  app.setName("BS Music");
   createWindow();
 });
 
@@ -123,7 +128,9 @@ async function musicData(songFiles,folderPath){
     }
 
     //aab cover_image ka time
-    let coversFolder=path.join(__dirname,"covers");
+    // let coversFolder=path.join(__dirname,"covers");
+    let coversFolder=path.join(app.getPath("userData"),"covers");
+
     if(!fs.existsSync(coversFolder)){
       fs.mkdirSync(coversFolder);
     }
@@ -135,7 +142,8 @@ async function musicData(songFiles,folderPath){
       let image_format=mdata.common.picture[0].format;
       cover_name=path.parse(element).name+"."+image_format.split("/")[1];
 
-      let coverFullPath=path.join(__dirname,"covers",cover_name);
+      // let coverFullPath=path.join(__dirname,"covers",cover_name);
+      let coverFullPath=path.join(app.getPath("userData"),"covers",cover_name);
 
       if(!fs.existsSync(coverFullPath)){
         
@@ -195,7 +203,8 @@ ipcMain.handle("get-songs",()=>{
         return{
           id: song.id,
           filePath:"file://"+song.song_path,
-          coverPath:"file://"+path.join(__dirname,"covers",song.cover_path),
+          // coverPath:"file://"+path.join(__dirname,"covers",song.cover_path),
+          coverPath:"file://"+path.join(app.getPath("userData"),"covers",song.cover_path),
           songName:song.song_name,
           duration:song.duration,
           artistName:song.artist_name

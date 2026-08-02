@@ -1,12 +1,5 @@
 #ham ye file git ko nahi bhejna chate isiliye isko ignore kar rahe hai ignore karne ka yehi tarika hai
-backend/covers/
-backend/node_modules/
-backend/app.js
-backend/index.html
-backend/main-using-MYSQL.js
-backend/music.db
-backend/test.js
-electron/
-2960.eps
-2960.jpg
-song.avif
+covers/
+node_modules/
+music.db
+dist/

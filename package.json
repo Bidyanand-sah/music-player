@@ -1,4 +1,17 @@
-{
+{ 
+  "build":{
+    "appId":"com.bidyanand.musicplayer",
+    "productName":"BS Music",
+    "files":["**/*","!music.db","!covers/**"],
+    "win":{
+      "target":["nsis"]
+    },
+    "nsis":{
+      "oneClick":false,
+      "allowToChangeInstallationDirectory":true,
+      "deleteAppDataOnUninstall":true
+    }
+  },
   "dependencies": {
     "better-sqlite3": "^13.0.1",
     "cors": "^2.8.6",
@@ -7,24 +20,27 @@
     "music-metadata": "^11.14.0",
     "mysql2": "^3.22.6"
   },
-  "name": "backend",
+  "name": "bs-music",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "devDependencies": {
     "@electron/rebuild": "^4.2.0",
-    "electron": "^43.1.1"
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rebuild": "electron-rebuild",
-    "start":"electron ."
+    "start": "electron .",
+    "build":"electron-builder"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "allowScripts": {
-    "better-sqlite3@13.0.1": true
+    "better-sqlite3@13.0.1": true,
+    "electron-winstaller@5.4.0": true
   }
 }
