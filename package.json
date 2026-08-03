@@ -1,27 +1,40 @@
-{ 
-  "build":{
-    "appId":"com.bidyanand.musicplayer",
-    "productName":"BS Music",
-    "files":["**/*","!music.db","!covers/**"],
-    "win":{
-      "target":["nsis"]
+{
+    
+  "build": {
+    "appId": "com.bidyanand.musicplayer",
+    "productName": "BS Music",
+    "files": [
+      "**/*",
+      "!music.db",
+      "!covers/**"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
     },
-    "nsis":{
-      "oneClick":false,
-      "allowToChangeInstallationDirectory":true,
-      "deleteAppDataOnUninstall":true
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": true
+    },
+    "publish":{
+        "provider":"github",
+        "owner":"Bidyanand-sah",
+        "repo":"music-player"
     }
   },
   "dependencies": {
     "better-sqlite3": "^13.0.1",
     "cors": "^2.8.6",
+    "electron-updater": "^6.8.9",
     "express": "^5.2.1",
     "multer": "^2.2.0",
     "music-metadata": "^11.14.0",
     "mysql2": "^3.22.6"
   },
   "name": "bs-music",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "main.js",
   "devDependencies": {
@@ -33,7 +46,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "rebuild": "electron-rebuild",
     "start": "electron .",
-    "build":"electron-builder"
+    "build": "electron-builder",
+    "deploy":"electron-builder --publish always"
   },
   "keywords": [],
   "author": "",

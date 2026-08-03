@@ -92,6 +92,12 @@ ipcMain.handle("select-folder",async()=>{
 
 });
 
+//Ye "destructuring" hai — electron-updater package jo object export karta hai, usme se autoUpdater naam ki property nikaal ke, usi naam se (autoUpdater) ek variable bana diya.
+const{autoUpdater}=require("electron-updater");
+
+//Ye same cheez hai, bas variable ka naam tumne khud choose kiya
+// const update=require("electron-updater").autoUpdater;
+
 
 //electron ko load hone mea time lagta hai ham check kar rahe hai aap jab ready ho jaye to then mea return hoga uske baad aandar ka function call hoga then upar ka function chalega phir window bhi load ho jayega
 app.whenReady().then(()=>{
@@ -99,6 +105,7 @@ app.whenReady().then(()=>{
   Menu.setApplicationMenu(null);
   app.setName("BS Music");
   createWindow();
+  autoUpdater.checkForUpdatesAndNotify();
 });
 
 
