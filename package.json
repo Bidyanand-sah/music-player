@@ -1,5 +1,4 @@
 {
-    
   "build": {
     "appId": "com.bidyanand.musicplayer",
     "productName": "BS Music",
@@ -18,16 +17,17 @@
       "allowToChangeInstallationDirectory": true,
       "deleteAppDataOnUninstall": true
     },
-    "publish":{
-        "provider":"github",
-        "owner":"Bidyanand-sah",
-        "repo":"music-player",
-        "releaseType":"release"
+    "publish": {
+      "provider": "github",
+      "owner": "Bidyanand-sah",
+      "repo": "music-player",
+      "releaseType": "release"
     }
   },
   "dependencies": {
     "better-sqlite3": "^13.0.1",
     "cors": "^2.8.6",
+    "electron-log": "^5.4.4",
     "electron-updater": "^6.8.9",
     "express": "^5.2.1",
     "multer": "^2.2.0",
@@ -48,7 +48,7 @@
     "rebuild": "electron-rebuild",
     "start": "electron .",
     "build": "electron-builder",
-    "deploy":"electron-builder --publish always"
+    "deploy": "electron-builder --publish always"
   },
   "keywords": [],
   "author": "",
