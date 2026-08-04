@@ -1,6 +1,38 @@
 // const { response } = require("express");
 // const { error } = require("node:console");
 
+let updateStatusText=document.getElementById("updateStatusText");
+let updateProgressBar=document.getElementById("updateProgressBar");
+window.myAPI.onUpdateStatus((data)=>{
+  switch(data.status){
+    case "checking":{
+      updateStatusText.innerText="Checking for Updates..";
+      break;
+    }
+    case "available":{
+      updateStatusText.innerText="Update available,Downloading";
+      break;
+    }
+    case "not-available":{
+      updateStatusText.innerText="App is up to date";
+      break;
+    }
+    case "downloading":{
+      updateStatusText.innerText="Downloading.."+data.percent + "%";
+      updateProgressBar.value=data.percent;
+      break;
+    }
+    case "downloaded":{
+      updateStatusText.innerText="Update ready! Restart to Apply.";
+      break;
+    }
+    case "error":{
+      updateStatusText.innerText="Something went wrong while Updating . "+ data.message;
+      break;
+    }
+  }
+});
+
 // yaha multipal songs story hai
   let songs=[];
 
@@ -372,4 +404,17 @@ volumeBar.addEventListener("input",()=>{
   //naya volume ko localStorage mea save kar do 
   localStorage.setItem("volume",volumeBar.value);
   
+});
+
+//update bar code
+let updateIcon=document.getElementById("updateIcon");
+let updatePage=document.getElementById("updatePage");
+let closeUpdatePage=document.getElementById("closeUpdatePage");
+
+updateIcon.addEventListener("click",()=>{
+  updatePage.style.display="flex";
+});
+
+closeUpdatePage.addEventListener("click",()=>{
+  updatePage.style.display="none";
 });

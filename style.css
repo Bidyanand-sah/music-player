@@ -344,3 +344,116 @@ transform-origin: center top;
         width: 40vw;
     }
 }
+
+/* Update icon in navbar */
+#updateIcon{
+    margin-left: auto;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+#updateIcon:hover{
+    color: #2b2f45;
+}
+
+/* Update overlay page */
+.updatePage{
+    display: none;           /* JS isko "flex" karega jab dikhana ho */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Andar wala actual card jisme content hai */
+.updatePage > .updatePageHeader,
+.updatePage > .updateCurrentStatus,
+.updatePage > .updateHistory{
+    width: 90%;
+    max-width: 500px;
+}
+
+.updatePageHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111;
+    color: white;
+    padding: 16px 20px;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 1px solid #333;
+}
+
+.updatePageHeader h2{
+    font-size: 1.2rem;
+}
+
+#closeUpdatePage{
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #aaa;
+    transition: color 0.2s ease;
+}
+
+#closeUpdatePage:hover{
+    color: white;
+}
+
+.updateCurrentStatus{
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#updateStatusText{
+    font-size: 0.95rem;
+    color: #ddd;
+}
+
+#updateProgressBar{
+    width: 100%;
+    height: 10px;
+    accent-color: #7385ed;
+    border-radius: 10px;
+}
+
+.updateHistory{
+    background-color: #111;
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 12px 12px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.updateHistory h3{
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #7385ed;
+}
+
+#updateHistoryList{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#updateHistoryList li{
+    font-size: 0.85rem;
+    color: #ccc;
+    background-color: #1a1a1a;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid #7385ed;
+}

@@ -18,8 +18,29 @@
             <li>Home</li>
             <li>Playlist</li>
             <li>About</li>
+            <li id="updateIcon"><i class="fa-solid fa-download"></i></li>
         </ul>
     </nav>
+
+    <!-- update show hoga yaha -->
+    <div class="updatePage" id="updatePage">
+    <div class="updatePageHeader">
+        <h2>App Updates</h2>
+        <i class="fa-solid fa-xmark" id="closeUpdatePage"></i>
+    </div>
+
+    <div class="updateCurrentStatus">
+        <p id="updateStatusText">Checking for updates...</p>
+        <progress id="updateProgressBar" value="0" max="100"></progress>
+    </div>
+
+    <div class="updateHistory">
+        <h3>History</h3>
+        <ul id="updateHistoryList">
+            <!-- yaha JS se history items add honge -->
+        </ul>
+    </div>
+</div>
 
     <div class="container">
         <div class="songlist">

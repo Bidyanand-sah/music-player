@@ -19,6 +19,9 @@ const Database=require("better-sqlite3");
 //
 let db=new Database(path.join(app.getPath("userData"),"music.db"));
 
+//
+let mainWindow;
+
 // Yaha mere hisab se databse ke aandar table create ho raha hai
 db.exec("CREATE TABLE IF NOT EXISTS songs(id INTEGER PRIMARY KEY AUTOINCREMENT,song_name TEXT,song_path TEXT UNIQUE,cover_path TEXT,duration TEXT,artist_name TEXT)");
 
@@ -33,6 +36,7 @@ function createWindow(){
             preload:path.join(__dirname,"preload.js")
         }
     });
+    mainWindow=window;
     window.loadFile("my_music.html");
 }
 
@@ -105,7 +109,32 @@ app.whenReady().then(()=>{
   Menu.setApplicationMenu(null);
   app.setName("BS Music");
   createWindow();
-  autoUpdater.checkForUpdatesAndNotify();
+  // autoUpdater.checkForUpdatesAndNotify();
+  autoUpdater.checkForUpdates();
+  autoUpdater.on("download-progress",(progressInfo)=>{
+    mainWindow.webContents.send("auto-update",{status:"downloading",percent:progressInfo.percent});
+  });
+  
+  autoUpdater.on("checking-for-update",()=>{
+    mainWindow.webContents.send("auto-update",{status:"checking"});
+  });
+
+  autoUpdater.on("update-available",()=>{
+    mainWindow.webContents.send("auto-update",{status:"available"});
+  });
+
+  autoUpdater.on("update-not-available",()=>{
+    mainWindow.webContents.send("auto-update",{status:"not-available"});
+  });
+
+  autoUpdater.on("update-downloaded",()=>{
+    mainWindow.webContents.send("auto-update",{status:"downloaded"});
+  });
+
+  autoUpdater.on("error",(error)=>{
+    mainWindow.webContents.send("auto-update",{status:"error",message:error.message});
+  });
+
 });
 
 
